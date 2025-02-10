@@ -1,0 +1,215 @@
+/* General Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  width: 101%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(120deg, rgba(0, 0, 0, 0.9), rgba(34, 193, 195, 0.8));
+  padding: 1rem 2rem;
+}
+
+.navbar-brand {
+  display: flex;
+      /* border: 2px solid red; */
+      justify-content: space-between;
+      align-items: center;
+      /* width: 100vw; */
+}
+
+.navbar-brand .h21 {
+  color: white;
+  font-size: 2rem;
+  text-decoration: none;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand .h21:hover {
+  color: rgb(105, 174, 203);
+}
+
+/* Mobile Menu Toggle Button */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.mobile-menu-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 2rem;
+  transition: all 0.3s;
+}
+
+.nav-links.active {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links a,
+.nav-links span {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+.nav-links a:hover,
+.nav-links span:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: black;
+}
+
+/* 🔽 Dropdown Menu */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.9);
+  min-width: 220px;
+  padding: 10px 0;
+  z-index: 1001;
+  border-radius: 4px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown.active .dropdown-content {
+  display: block;
+}
+
+/* Links inside dropdown */
+.dropdown-content a {
+  color: white;
+  padding: 10px;
+  display: block;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* 🔽 Nested Dropdown Menu */
+.nested-dropdown {
+  position: relative;
+}
+
+.nested-dropdown span {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  color: white;
+}
+
+.nested-dropdown span::after {
+  content: "›";
+  font-size: 1.2rem;
+  margin-left: 0.5rem;
+}
+
+/* Proper alignment for nested dropdowns */
+.nested-dropdown-content {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  background: rgba(0, 0, 0, 0.9);
+  min-width: 200px;
+  padding: 10px 0;
+  z-index: 1001;
+  border-radius: 4px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.nested-dropdown.active .nested-dropdown-content {
+  display: block;
+}
+
+/* Links inside nested dropdown */
+.nested-dropdown-content a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+}
+
+.nested-dropdown-content a:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ✅ Mobile-Friendly Adjustments */
+@media (max-width: 975px) {
+  .mobile-menu-toggle {
+    display: block;
+  }
+
+  .navbar-brand {
+    width: 100vw;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+  }
+
+  .nav-links.active {
+    display: flex;
+    max-height: 500px;
+    opacity: 1;
+  }
+
+  .dropdown-content,
+  .nested-dropdown-content {
+    position: relative;
+    width: 100%;
+    left: 0;
+    background: rgba(0, 0, 0, 0.9);
+    box-shadow: none;
+  }
+
+  .dropdown.active .dropdown-content,
+  .nested-dropdown.active .nested-dropdown-content {
+    display: flex;
+    flex-direction: column;
+  }
+}
